@@ -1,0 +1,17 @@
+<form [formGroup]="addEmployee" class="example-form">
+    <button mat-raised-button color="primary" class="float-end " (click)="back()"><mat-icon >backspace</mat-icon></button>  
+    <h1 class="text-info">Add Employee</h1>  
+  <div class="col-12">
+    <mat-form-field class="  p-2  col-10" appearance="fill">
+      <input matInput formControlName="user" matInput placeholder="User Name">
+      <mat-error *ngIf="addEmployee.controls['user'].getError('required')">USER Name is Required</mat-error>
+    </mat-form-field>
+    <mat-form-field class="p-2 col-10" appearance="fill">
+      <input matInput placeholder="Password" [type]="hide ? 'password' : 'text'" formControlName="password" required>
+      <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+      <mat-hint *ngIf="!passwordInput?.value">Enter your password</mat-hint>
+  </mat-form-field>
+  </div>
+    <button mat-raised-button color="primary" (click)="log_in()">Save</button>
+  </form>
+ 

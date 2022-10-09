@@ -1,0 +1,77 @@
+
+  <div class="container">
+    <div class="row">
+      <div class="col col-lg-12" style="overflow-y: scroll; max-height: 100vh">
+        <form [formGroup]="addEmployee" (ngSubmit)="save()">
+            <h1 class="text-info">Company Details</h1>
+            <mat-form-field class=" w-100" appearance="outline">
+              <mat-label>Company Register No. </mat-label>
+              <input matInput matInput #postalCode maxlength="5" formControlName="Register">
+              <mat-error *ngIf="addEmployee.controls['register'].getError('required')">Id is Required</mat-error>
+            </mat-form-field>
+          
+           <div class="col-12  ">
+            <mat-form-field class="col-6  p-2 " appearance="outline">
+              <mat-label>Company Name</mat-label>
+              <input matInput formControlName="companyname">
+              <mat-error *ngIf="addEmployee.controls['companyname'].getError('required')">FirstName is Required</mat-error>
+            </mat-form-field>
+            <mat-form-field class="col-6 p-2" appearance="outline">
+              <mat-label>Founder Name</mat-label>
+              <input matInput formControlName="foundername">
+              <mat-error *ngIf="addEmployee.controls['foundername'].getError('required')">LastName is Required</mat-error>
+            </mat-form-field>
+           </div>
+            <div class="col-12">
+              <mat-form-field class="col-6 p-2" appearance="outline">
+                <mat-label>Email</mat-label>
+                <input  type="email" matInput formControlName="email" placeholder="Ex. pat@example.com" formControlName="email">
+                <mat-error *ngIf="addEmployee.controls['email'].getError('required')">Email is Required</mat-error>
+              </mat-form-field>
+            </div>
+          
+            <mat-form-field class="example-full-width w-100" appearance="outline">
+              <mat-label>Contact No. </mat-label>
+              <input matInput matInput #postalCode maxlength="10" formControlName="contact">
+              <mat-error *ngIf="addEmployee.controls['contact'].getError('required')">contact is Required</mat-error>
+            </mat-form-field>
+        
+            <div class="mb-3" formArrayName="skills">
+                <div class="row">
+                  <div class="col col-md-4 ">
+                    <button type="button" (click)="addASkillFormGroup()" class="btn btn-primary">
+                      Add A Skill
+                    </button>
+                  </div>
+                </div>
+                <ng-container *ngFor="let skillForm of skillsForms.controls; let i = index">
+                  <div class="row" [formGroupName]="i">
+                    <div class="col col-md-5">
+                      <div class="mb-3">
+                        <label [for]="'name' + i" class="form-label">Name</label>
+                        <input type="text" class="form-control" [id]="'name' + i" formControlName="name"/>
+                      </div>
+                    </div>
+                    <div class="col col-md-5">
+                      <div class="mb-3">
+                        <label [for]="'experience' + i" class="form-label">Experience</label>
+                        <input type="text" class="form-control" [id]="'experience' + i" formControlName="experience"/>
+                      </div>
+                    </div>
+                    <div class="col col md-2">
+                      <button class="btn btn-danger mt-4" type="button" (click)="addASkillFormGroup()">
+                       add
+                      </button>
+                    </div>
+                  </div> 
+                </ng-container>
+              </div>
+        
+              <button type="submit" class="btn btn-primary">Submit</button>
+          </form>
+      </div>
+      <div class="col col-md-4">
+        <div style="position: fixed">{{ preview }}</div>
+      </div>
+    </div>
+  </div>

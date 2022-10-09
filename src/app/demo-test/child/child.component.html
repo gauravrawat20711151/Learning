@@ -1,0 +1,12 @@
+<div style="border: solid 1px black;">
+    <p>child Component</p>
+    <br>
+    First Name: {{ firstName }}
+    <br>
+    Last Name: {{ lastName }}
+    Siblings:
+    <br>
+    <span *ngFor="let sibling of siblings"> 
+        {{ sibling.name }} <br>.
+    </span>
+</div>

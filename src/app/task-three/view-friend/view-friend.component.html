@@ -1,0 +1,41 @@
+<button mat-raised-button color="primary" class="fs-4 fw-bold m-2" (click)="viewFriend()">Add Friend</button>
+<table mat-table [dataSource]="datas" class="w-100" #myTable>
+  
+    
+    <ng-container matColumnDef="friend">
+      <th mat-header-cell *matHeaderCellDef class="h1"> Friend No.  </th>
+      <td mat-cell *matCellDef="let element"> {{element.friend}} </td>
+    </ng-container>
+  
+
+    <ng-container matColumnDef="fname">
+      <th mat-header-cell *matHeaderCellDef class="h1"> FirstName </th>
+      <td mat-cell *matCellDef="let element"> {{element.fname}} </td>
+    </ng-container>
+    <ng-container matColumnDef="lname">
+      <th mat-header-cell *matHeaderCellDef class="h1"> LastName </th>
+      <td mat-cell *matCellDef="let element"> {{element.lname}} </td>
+    </ng-container>
+  
+   
+    <ng-container matColumnDef="email">
+      <th mat-header-cell *matHeaderCellDef class="h1"> Email</th>
+      <td mat-cell *matCellDef="let element"> {{element.email}} </td>
+    </ng-container>
+  
+
+    <ng-container matColumnDef="Amount">
+      <th mat-header-cell *matHeaderCellDef class="h1"> Amount to pay </th>
+      <td mat-cell *matCellDef="let element"> {{element.Amount}} </td>
+    </ng-container>
+    <ng-container matColumnDef="action">
+        <th mat-header-cell *matHeaderCellDef class="h1"> Action</th>
+        <td mat-cell *matCellDef="let element"> 
+            <button mat-raised-button class="m-2" color="primary"(click)="editFriend(element)"  >Edit</button>
+            <button mat-raised-button class="m-2" color="warn"(click)="delete(element)" >Delete</button>
+
+             </td>
+      </ng-container>
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>

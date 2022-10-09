@@ -1,0 +1,32 @@
+<form [formGroup]="editEmployee">
+    <mat-form-field class="example-full-width w-100" appearance="outline">
+        <mat-label>EmployeeId </mat-label>
+        <input matInput matInput #postalCode maxlength="5" formControlName="EmployeeID">
+        <mat-error *ngIf="editEmployee.controls['EmployeeID'].getError('required')">Id is Required</mat-error>
+      </mat-form-field>
+    
+     <div class="col-12  ">
+      <mat-form-field class="col-6  p-2 " appearance="outline">
+        <mat-label>FirstName</mat-label>
+        <input matInput formControlName="fname">
+        <mat-error *ngIf="editEmployee.controls['fname'].getError('required')">FirstName is Required</mat-error>
+      </mat-form-field>
+      <mat-form-field class="col-6 p-2" appearance="outline">
+        <mat-label>LastName</mat-label>
+        <input matInput formControlName="lname">
+        <mat-error *ngIf="editEmployee.controls['lname'].getError('required')">LastName is Required</mat-error>
+      </mat-form-field>
+     </div>
+     <mat-form-field class="col-12 p-2" appearance="outline">
+        <mat-label>Email</mat-label>
+        <input  type="email" matInput formControlName="email" placeholder="Ex. pat@example.com" formControlName="email">
+        <mat-error *ngIf="editEmployee.controls['email'].getError('required')">Email is Required</mat-error>
+        <mat-error *ngIf="editEmployee.controls['email'].getError('email')">Not a valid email</mat-error>
+      </mat-form-field>
+      <mat-form-field class="example-full-width w-100" appearance="outline">
+        <mat-label>Salary </mat-label>
+        <input matInput matInput #postalCode maxlength="5" formControlName="salary">
+        <mat-error *ngIf="editEmployee.controls['salary'].getError('required')">salary is Required</mat-error>
+      </mat-form-field>
+      <button mat-raised-button color="primary" (click)="save()">Save</button>
+</form>

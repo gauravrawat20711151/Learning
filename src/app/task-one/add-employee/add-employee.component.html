@@ -1,0 +1,77 @@
+<form [formGroup]="addEmployee">
+    <h1 class="text-info">Add Employee</h1>
+    <mat-form-field class=" w-100" appearance="outline">
+      <mat-label>EmployeeId </mat-label>
+      <input matInput matInput #postalCode maxlength="5" formControlName="EmployeeID">
+      <mat-error *ngIf="addEmployee.controls['EmployeeID'].getError('required')">Id is Required</mat-error>
+    </mat-form-field>
+  
+   <div class="col-12  ">
+    <mat-form-field class="col-6  p-2 " appearance="outline">
+      <mat-label>FirstName</mat-label>
+      <input matInput formControlName="fname">
+      <mat-error *ngIf="addEmployee.controls['fname'].getError('required')">FirstName is Required</mat-error>
+    </mat-form-field>
+    <mat-form-field class="col-6 p-2" appearance="outline">
+      <mat-label>LastName</mat-label>
+      <input matInput formControlName="lname">
+      <mat-error *ngIf="addEmployee.controls['lname'].getError('required')">LastName is Required</mat-error>
+    </mat-form-field>
+   </div>
+    <div class="col-12">
+      <mat-form-field class="col-6 p-2" appearance="outline">
+        <mat-label>Email</mat-label>
+        <input  type="email" matInput formControlName="email" placeholder="Ex. pat@example.com" formControlName="email">
+        <mat-error *ngIf="addEmployee.controls['email'].getError('required')">Email is Required</mat-error>
+        <mat-error *ngIf="addEmployee.controls['salary'].getError('required')">salary is Required</mat-error>
+
+      </mat-form-field>
+    
+      <mat-form-field class="col-6 p-2" appearance="outline">
+        <mat-label>DOB</mat-label>
+        <input matInput [matDatepicker]="picker" formControlName="dob">
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+  
+    </div>
+    <div class="col-12">
+      <mat-form-field class="col-6  p-2" appearance="outline">
+        <mat-label>Designation</mat-label>
+        <input matInput formControlName="Designation">
+        <mat-error *ngIf="addEmployee.controls['Designation'].getError('required')">Designation is Required</mat-error>
+      </mat-form-field>
+  
+      <div class="col-6 float-end">
+        <label class="p-2">Gender</label><br>
+        <mat-radio-group>
+          <mat-radio-button class="px-2" value="Male">Male</mat-radio-button>
+          <mat-radio-button class="px-2" value="female">female</mat-radio-button>
+        </mat-radio-group>
+      </div>
+        
+    </div>
+    
+  
+    <mat-form-field class="example-full-width w-100" appearance="outline">
+      <mat-label>Salary </mat-label>
+      <input matInput matInput #postalCode maxlength="5" formControlName="salary">
+      <mat-error *ngIf="addEmployee.controls['salary'].getError('required')">salary is Required</mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="form-field col-6 p-2">
+      <mat-label>Password</mat-label>
+      <input matInput placeholder="Password" [type]="hide ? 'password' : 'text'" formControlName="password" name="password" type="password" required pattern="^(?=.*[A-Z])(?=.*[0-9])(?=.*[a-z]).{8,}$">
+        <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+      <mat-error *ngIf="addEmployee.value.password">Password must be a combination of lower-case, upper-case, numbers and at least 9 characters long</mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="outline" class="form-field col-6 p-2">
+      <mat-label>Confirm Password</mat-label>
+      <input matInput placeholder="confirmPassword" [type]="hide1 ? 'confirmPassword' : 'text'" formControlName="confirmPassword" name="confirmPassword" type="confirmPassword" required pattern="{{addEmployee.value.confirmPassword}}">
+      <mat-icon matSuffix (click)="hide1 = !hide1">{{hide1 ? 'visibility_off' : 'visibility'}}</mat-icon>
+
+      <mat-error *ngIf="addEmployee.value.verifyPassword">Passwords do not match.</mat-error>
+    </mat-form-field>
+    <button mat-raised-button color="primary" (click)="saveEmployee()">Save</button>
+  </form>
+ 

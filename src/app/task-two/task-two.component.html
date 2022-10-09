@@ -1,0 +1,14 @@
+<!-- <mat-button-toggle-group name="fontStyle" aria-label="Font Style">
+    <mat-button-toggle value="addEmployee" routerLink="addEmp" class="bg-warning text-light">Add  Employee</mat-button-toggle>
+    <mat-button-toggle value="addStudent" routerLink="addStudent" class="bg-warning text-light">Add  student</mat-button-toggle>
+    <mat-button-toggle value="addFriend" routerLink="addFriend" class="bg-warning text-light">Add  friend</mat-button-toggle>
+  </mat-button-toggle-group> -->
+  <button mat-button [matMenuTriggerFor]="menu">Menu</button>
+<mat-menu #menu="matMenu">
+  <mat-button-toggle value="addEmployee" routerLink="addEmp" class="bg-warning text-light">Add  Employee</mat-button-toggle>
+  <mat-button-toggle value="addStudent" routerLink="addStudent" class="bg-warning text-light">Add  student</mat-button-toggle>
+  <mat-button-toggle value="addFriend" routerLink="addFriend" class="bg-warning text-light">Add  friend</mat-button-toggle>
+</mat-menu>
+ <div class="container">
+  <router-outlet></router-outlet>
+ </div>
